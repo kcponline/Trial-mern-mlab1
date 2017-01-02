@@ -17,3 +17,4 @@ var Click = mongoose.model('Click', ClickSchema);
 
 // Export it for use elsewhere
 module.exports = Click;
+

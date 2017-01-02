@@ -3,7 +3,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-// var MONGODB_URI = require('./.env');
+// var dotenvs = require('dotenvs');
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost';
 
 
 //Require Click Schema
@@ -26,10 +27,10 @@ app.use(express.static('./public'));
 
 // var dbconnect = process.env.MONGODB_URI || 'mongodb://localhost';
 // MongoDB Configuration configuration (Change this URL to your own DB)
-// mongoose.connect('mongodb://heroku_xkvq4cfq:egppcbpinecs7jt0rvhvbs45jg@ds151008.mlab.com:51008/heroku_xkvq4cfq');
-// mongoose.connect('dbconnect');
-// var db = mongoose.connection;
-var db = process.env.MONGODB_URI1;
+mongoose.connect(MONGODB_URI);
+// mongoose.connect('mongodb://localhost');
+var db = mongoose.connection;
+// var db = process.env.MONGODB_URI1;
 // var db = process.env.MONGODB_URI || 'mongodb://localhost:27017/<your database name goes here>';
 
 db.on('error', function (err) {
